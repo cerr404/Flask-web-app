@@ -1,0 +1,32 @@
+body{
+    background-color:#F1F1FC;
+}
+
+textarea[dir="rtl"] {
+    text-align: right;
+}
+
+textarea[dir="ltr"] {
+    text-align: left;
+}
+
+.list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    overflow: auto; /*to avoid are notes to overfelow*/
+    max-height: 150px; /* it sets a height limit */
+    word-wrap: break-word;
+    word-break: break-word;
+    white-space: normal;
+    
+}
+
+.list-group-item span {
+    flex-grow: 1; /* ensures the text takes up available space */
+    margin-right: 10px; /* adds space between the text and the button */
+}
+
+.close{
+    margin-left: auto;
+}

@@ -1,0 +1,56 @@
+{% extends "base.html" %} {% block title %} Sign Up {% endblock %} {% block
+content %}
+
+<section class="container d-flex justify-content-center">
+  <form method="POST" class="mt-5">
+    <h3 align="center" class="mb-5">Sign Up</h3>
+    <section class="form-group mb-2">
+      <label for="email" class="mb-2">Email Address</label>
+      <input
+        class="form-control"
+        type="email"
+        name="email"
+        id="email"
+        placeholder="name@example.com"
+      />
+    </section>
+
+    <section class="form-group mb-2">
+      <label for="firstName" class="mb-2">First Name</label>
+      <input
+        class="form-control"
+        type="text"
+        name="firstName"
+        id="firstName"
+        placeholder="First Name"
+      />
+    </section>
+
+    <section class="form-group mb-2">
+      <label for="password1" class="mb-2">Password</label>
+      <input
+        class="form-control"
+        type="password"
+        name="password1"
+        id="password1"
+        placeholder="password"
+      />
+    </section>
+
+    <section class="form-group">
+      <label for="password2" class="mb-2">Confirm Password</label>
+      <input
+        class="form-control"
+        type="password"
+        name="password2"
+        id="password2"
+        placeholder="confirm password"
+      />
+    </section>
+    <br />
+    <section class="d-flex justify-content-center">
+      <button class="btn btn-primary rounded-2" type="submit">Submit</button>
+    </section>
+  </form>
+</section>
+{% endblock %}

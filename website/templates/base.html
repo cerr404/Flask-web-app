@@ -1,0 +1,81 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/styles/bootstrap-reboot.min.css" />
+    <link rel="stylesheet" href="../static/styles/bootstrap.css" />
+    <link rel="stylesheet" href="../static/styles/style.css" />
+    <title>{% block title %}{% endblock %}</title>
+  </head>
+  <body>
+    <nav class="navbar nav-dark bg-body-tertiary navbar-expand-lg mb-5">
+      <section class="container-fluid">
+        <a href="/" class="navbar-brand fw-bold me-auto">MyNotes</a>
+
+        <button
+          type="button"
+          class="navbar-toggler"
+          data-bs-toggle="collapse"
+          data-bs-target="#NavToggler"
+          aria-controls="NavToggler"
+          aria-expanded="false"
+          aria-label="navbar-toggler"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <section class="collapse navbar-collapse" id="NavToggler">
+          <section class="navbar-nav ms-2">
+            {% if user.is_authenticated %}
+            <a href="/" class="nav-item nav-link fw-semibold" id="home">Home</a>
+
+            <a href="/logout" class="nav-item nav-link fw-semibold" id="logout"
+              >Logout</a
+            >
+            {% else %}
+            <a href="/login" class="nav-item nav-link fw-semibold" id="login"
+              >Login</a
+            >
+            <a href="/sign-up" class="nav-item nav-link fw-semibold" id="signUp"
+              >Sign Up</a
+            >
+            {% endif %}
+          </section>
+        </section>
+      </section>
+    </nav>
+
+    <!-- flash messages -->
+
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if
+    messages %} {% for category, message in messages %} {% if category ==
+    'error' %}
+    <section
+      class="alert alert-danger alert-dismissible fade show"
+      role="alert"
+    >
+      {{ message }}
+      <button type="button" class="close" data-bs-dismiss="alert">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </section>
+    {% else %}
+    <section
+      class="alert alert-success alert-dismissible fade show"
+      role="alert"
+    >
+      {{ message }}
+      <button type="button" class="close" data-bs-dismiss="alert">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </section>
+    {% endif %} {% endfor %} {% endif %} {% endwith %} {% block content %}{%
+    endblock %}
+
+    <!-- ------------------scripts---------------- -->
+
+    <script src="../static/js/jquery-3.7.1.min.js"></script>
+    <script src="../static/js/popper.js"></script>
+    <script src="../static/js/bootstrap.js"></script>
+    <script src="../static/js/index.js"></script>
+  </body>
+</html>
