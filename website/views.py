@@ -5,10 +5,10 @@ from . import db
 import json
 
 
-views = Blueprint('views', __name__)
+views = Blueprint('views', __name__) # creating the blueprint for our views object
 
 @views.route('/', methods= ['GET', 'POST'])
-@login_required
+@login_required # makes sure to show this route only if we've loged in
 def home():
     if request.method == 'POST':
         note = request.form.get('note')
