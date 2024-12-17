@@ -12,9 +12,6 @@ def login():
         email = request.form.get('email')
         password = request.form.get('password')
 
-        print(f"Input email: {email}")
-        print(f"Input password: {password}")
-
 
         user = User.query.filter_by(email =email).first()
         if user:
@@ -49,15 +46,14 @@ def sign_up():
         elif len(email) < 4:
             flash('Email must be greater than 3 characters.', category='error')
         elif len(first_name) < 3:
-            flash('First name must be greater than 1 character.', category='error')
+            flash('First name must be greater than 2 characters.', category='error')
         elif password1 != password2:
             flash('Passwords don\'t match.', category='error')
         elif len(password1) < 8:
             flash('Password must be at least 8 characters.', category='error')
         else:
-            hashed_password = generate_password_hash(password1, method='bcrypt', salt_length= 16)
+            hashed_password = generate_password_hash(password1, method="pbkdf2:sha256")
             new_user = User(email = email, first_name = first_name, password = hashed_password)
-            print(f'hashed password: {hashed_password}')
             db.session.add(new_user)
             db.session.commit()
             flash('Your account is created successfully :)', category='success')
