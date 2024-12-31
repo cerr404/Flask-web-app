@@ -5,16 +5,33 @@
   <h1 align="center" class="p-3">Your Notes</h1>
   <ul class="list-group list-group-flush" id="notes">
     {% for note in user.notes %}
-    <li class="list-group-item">
-      {{ note.data }}
-      <button type="button" class="close" onClick="deleteNote({{ note.id }})">
-        <span aria-hidden="true">&times;</span>
-      </button>
+    <li class="list-group-item" id="note-{{ note.id }}">
+      <span id="note-content-{{ note.id }}">{{ note.data }}</span>
+      <section class="button-group">
+        <button
+          type="button"
+          class="btn btn-sm btn-outline-dark mb-2"
+          onClick="editNote({{ note.id }})"
+        >
+          Edit
+        </button>
+        <button
+          type="button"
+          class="close btn btn-sm btn-outline-dark"
+          onClick="deleteNote({{ note.id }})"
+        >
+          <span aria-hidden="true">delete</span>
+        </button>
+      </section>
     </li>
     {% endfor %}
   </ul>
   <form method="POST" class="mt-5 text-center">
-    <textarea name="note" id="note" class="form-control mb-3"></textarea>
+    <textarea
+      name="note"
+      id="note"
+      class="form-control mb-3 my-auto"
+    ></textarea>
     <section>
       <button class="btn btn-primary py-2 px-5">Add</button>
     </section>

@@ -30,3 +30,30 @@ textarea[dir="ltr"] {
 .close{
     margin-left: auto;
 }
+
+
+.button-group {
+    display: flex;
+    flex-direction: column; /* Stacks buttons vertically */
+  }
+  
+
+/* Prevent long text from stretching the buttons */
+.note-text {
+    word-wrap: break-word; /* Break long words */
+    overflow-wrap: break-word;
+    max-width: 70%; /* Adjust as needed to limit the text width */
+  }
+  
+  /* Ensure buttons maintain a fixed size */
+  .button-group {
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+    gap: 5px; /* Space between buttons */
+  }
+  
+  .button-group .btn {
+    width: 80px; /* Set a fixed width */
+    white-space: nowrap; /* Prevent text inside the buttons from wrapping */
+  }
+  
